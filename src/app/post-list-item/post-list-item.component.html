@@ -1,0 +1,6 @@
+<button type="button"  class="btn btn-success" 
+[disabled]="!isAuth"
+(click)="onLike()">Love it</button>
+<button type="button"  class="btn btn-danger"
+[disabled]="!isAuth"
+(click)="onNoLike()">Don't love it</button>
