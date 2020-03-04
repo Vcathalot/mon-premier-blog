@@ -1,5 +1,7 @@
 <li class="list-group-item">
-    <h4>Title : {{ postName }}</h4>
+   
+    <h4 >Title : {{ postName }}</h4>
+    <p> {{ lastUpdate | date: 'medium' }}</p>
     <input type="text" class="form-control" [(ngModel)]="postName">
     <input type="text" class="form-control" [(ngModel)]="content">
     <app-post-list-item></app-post-list-item>

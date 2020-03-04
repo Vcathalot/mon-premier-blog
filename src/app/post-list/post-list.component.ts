@@ -9,15 +9,8 @@ export class PostListComponent implements OnInit {
 
   postName: string = 'Title name';
   content: string = 'writte your post';
+  lastUpdate = new Date();
 
-
-onLike() {
-    console.log('Like');
-}
-
-onNoLike() {
-  console.log('No like');
-}
 
   constructor() { }
 
