@@ -1,6 +1,33 @@
-<button type="button"  class="btn btn-success" 
-[disabled]="!isAuth"
-(click)="onLike()">Love it</button>
-<button type="button"  class="btn btn-danger"
-[disabled]="!isAuth"
-(click)="onNoLike()">Don't love it</button>
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': postLoveIts > postDontLoveIts ,
+                'list-group-item-danger': postLoveIts < postDontLoveIts }">
+    <div class="row">
+        <h2 class="col-md-6">{{ postTitle }}</h2>
+        <span class="col-md-6 text-right">{{ postCreatedAt | date: 'medium' | uppercase}}</span>
+        <input type="text"  class="form-control" placeholder="Ex : Zozor" [(ngModel)]="postTitle"><label>Entrer le titre du post</label>
+      </div>
+
+      <div class="row">
+            <h4 class="col-md-12">
+            {{ postContent }}
+            </h4>
+            <textarea type="text" class="form-control" [(ngModel)]="postContent">Ecrit ton Post!</textarea><label>Ecrire le post</label>
+            <div class="col-md-6 nbLike"><strong>Nombre de like :  {{ postLoveIts }}</strong></div>
+            <div class="col-md-6 nbLike"><strong>Nombre de Unlike :  {{ postDontLoveIts }}</strong></div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-1">
+                <button class="btn btn-success" 
+                [disabled]="!isAuth"
+                    (click)="onLoveIt()">Love it !</button>
+            </div>
+
+            <div class="col-md-1">
+                <button class="btn btn-danger"
+                    [disabled]="!isAuth"
+                     (click)="onDontLoveIt()">Don't love it !</button>
+            </div>
+        </div>
+  </li>
+

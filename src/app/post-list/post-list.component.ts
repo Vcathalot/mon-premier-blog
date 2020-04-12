@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit}  from '@angular/core';
 
 @Component({
   selector: 'app-post-list',
@@ -7,9 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostListComponent implements OnInit {
 
-  postName: string = 'Title name';
-  content: string = 'writte your post';
-  lastUpdate = new Date();
+  posts= [
+    {
+      title: 'Mon premier post',
+      content: 'Hello 1',
+      loveIts:0,
+      dontLoveIts:0,
+      createdAt:new Date ()
+    },
+    {
+      title: 'Mon coucou post',
+      content: 'Hello hello 2',
+      loveIts:0,
+      dontLoveIts:0,
+      createdAt: new Date ()
+    },
+    {
+      title: 'Mon troisième post',
+      content: 'Hello 3',
+      loveIts:0,
+      dontLoveIts:0,
+      createdAt: new Date ()
+    }
+  ];
 
 
   constructor() { }
