@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import * as firebase from 'firebase';
-import { Post } from '../models/book.models';
+import { Post } from '../models/post.models';
 
 
 @Injectable ()
@@ -63,3 +63,5 @@ export class PostsService {
     this.savePosts();
     this.emitPosts();
   }
+
+}
