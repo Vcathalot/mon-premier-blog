@@ -30,19 +30,6 @@ export class PostsService {
       );
   }
 
-  getSinglePost(id: number){
-    return new Promise(
-      (resolve, reject) => {
-        firebase.database().ref("/posts/" + id).once("value").then(
-          (data) => {
-            resolve(data.val());
-          }, (error) => {
-            reject(error);
-          }
-        );
-      }
-    );
-  }
 
   createNewPost(newPost: Post) {
     this.posts.push(newPost);
@@ -63,5 +50,18 @@ export class PostsService {
     this.savePosts();
     this.emitPosts();
   }
+
+  LoveIt(posts: Post) {
+    posts.loveIts++;
+  }
+
+  DontLoveIt(posts: Post) {
+    posts.dontLoveIts++;
+   
+  }
+
+  
+
+ 
 
 }
