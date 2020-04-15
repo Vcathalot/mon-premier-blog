@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../models/post.models';
-import { Subscription } from 'rxjs';
+
 import { PostsService } from '../services/post-service';
 import { Router } from '@angular/router';
 
@@ -9,34 +9,32 @@ import { Router } from '@angular/router';
   templateUrl: './post-list-item.component.html',
   styleUrls: ['./post-list-item.component.scss']
 })
-export class PostListItemComponent implements OnInit, OnDestroy {
+export class PostListItemComponent implements OnInit {
 
-  posts: Post [];
-  postsSubscription: Subscription;
+  @Input() postTitle: string;
+  @Input() postContent: string;
+  @Input() postCreatedAt: string;
+  @Input() postLoveIts: number;
+  @Input() postDontLoveIts: number;
+
+  @Input() post: Post;
 
   isAuth = true;
   
     constructor(public postsService: PostsService, public router: Router) { }
 
+ngOnInit() {}
 
-  ngOnInit() {
-    this.postsSubscription = this.postsService.postsSubject.subscribe(
-      (posts: Post[]) => {
-        this.posts = posts;
-      }
-    );
-    this.postsService.getPosts();
-    this.postsService.emitPosts();
+  onLoveIt() {
+    this.postLoveIts++;
+    this.post.loveIts = this.postLoveIts;
+    this.postsService.savePosts();
   }
 
- 
-
-  onLoveIt(posts: Post) {
-    this.postsService.LoveIt(posts)
-  }
-
-  onDontLoveIt(posts: Post) {
-    this.postsService.DontLoveIt(posts)
+  onDontLoveIt() {
+    this.postDontLoveIts--;
+    this.post.dontLoveIts = this.postDontLoveIts;
+    this.postsService.savePosts();
    
   }
 
@@ -48,8 +46,5 @@ export class PostListItemComponent implements OnInit, OnDestroy {
     this.postsService.removePost(posts);
   }
 
-  ngOnDestroy(){
-    this.postsSubscription.unsubscribe();
-  }
-
 }
+

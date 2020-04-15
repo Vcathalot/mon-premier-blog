@@ -4,14 +4,13 @@
     <div class="row">
         <h2 class="col-md-6">{{ postTitle }}</h2>
         <span class="col-md-6 text-right">{{ postCreatedAt | date: 'medium' | uppercase}}</span>
-        <input type="text"  class="form-control" placeholder="Ex : Zozor" [(ngModel)]="postTitle"><label>Entrer le titre du post</label>
+       
       </div>
 
       <div class="row">
             <h4 class="col-md-12">
             {{ postContent }}
             </h4>
-            <textarea type="text" class="form-control" [(ngModel)]="postContent">Ecrit ton Post!</textarea><label>Ecrire le post</label>
             <div class="col-md-6 nbLike"><strong>Nombre de like :  {{ postLoveIts }}</strong></div>
             <div class="col-md-6 nbLike"><strong>Nombre de Unlike :  {{ postDontLoveIts }}</strong></div>
         </div>

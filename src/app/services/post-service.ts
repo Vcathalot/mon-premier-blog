@@ -51,17 +51,4 @@ export class PostsService {
     this.emitPosts();
   }
 
-  LoveIt(posts: Post) {
-    posts.loveIts++;
-  }
-
-  DontLoveIt(posts: Post) {
-    posts.dontLoveIts++;
-   
-  }
-
-  
-
- 
-
 }
