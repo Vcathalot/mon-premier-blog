@@ -10,13 +10,15 @@ import { PostListItemComponent } from './post-list-item/post-list-item.component
 import { NewPostComponentComponent } from './new-post-component/new-post-component.component';
 import { PostsService } from './services/post-service';
 import { Routes, RouterModule } from '@angular/router';
+import { PostViewComponent } from './post-view/post-view.component';
 
 const appRoutes: Routes = [
   
-  { path: 'posts', component: PostListItemComponent },
-  { path: 'posts/new', component: NewPostComponentComponent },
-  { path: '', redirectTo: 'books', pathMatch: 'full' },
-  { path: '**', redirectTo: 'books' }
+  { path: 'posts', component: PostViewComponent },
+  { path: 'newpost', component: NewPostComponentComponent },
+  { path: '', component: PostViewComponent },
+  { path: '', redirectTo: 'posts', pathMatch: 'full' },
+  { path: '**', redirectTo: 'posts' }
 ];
 
 
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     AppComponent,
     PostListComponent,
     PostListItemComponent,
-    NewPostComponentComponent
+    NewPostComponentComponent,
+    PostViewComponent
   ],
   imports: [
     BrowserModule,

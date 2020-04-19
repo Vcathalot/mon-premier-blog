@@ -3,8 +3,9 @@ import { Subject } from 'rxjs/Subject';
 import * as firebase from 'firebase';
 import { Post } from '../models/post.models';
 
-
-@Injectable ()
+@Injectable({
+  providedIn: 'root'
+})
 export class PostsService {
 
   posts: Post[]= [];
@@ -23,11 +24,25 @@ export class PostsService {
 }
   getPosts() {
     firebase.database().ref('/posts')
-      .on('value', (data) => {
+      .on('value', (data ) => {
           this.posts = data.val() ? data.val() : [];
           this.emitPosts();
         }
       );
+  }
+
+  getSinglePost(id: number){
+    return new Promise(
+      (resolve, reject) => {
+        firebase.database().ref("/posts/" + id).once("value").then(
+          (data) => {
+            resolve(data.val());
+          }, (error) => {
+            reject(error);
+          }
+        );
+      }
+    );
   }
 
 
@@ -45,10 +60,15 @@ export class PostsService {
           return true;
         }
       }
-    )
+    );
     this.posts.splice(postIndexToRemove, 1);
     this.savePosts();
     this.emitPosts();
   }
+
+  removeAllPost(posts: number) {
+    this.posts.splice(posts);
+  }
+
 
 }

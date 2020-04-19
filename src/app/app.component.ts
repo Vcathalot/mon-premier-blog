@@ -9,19 +9,17 @@ import * as firebase from 'firebase';
 export class AppComponent {
   title = 'mon-premier-blog';
 
-  constructor(){
+  constructor() {
     const config = {
-      apiKey: "AIzaSyC7IvrWr54zPDbeN-NWLO2nLSDWOCjBjYA",
-      authDomain: "mon-premier-blog-e3b56.firebaseapp.com",
-      databaseURL: "https://mon-premier-blog-e3b56.firebaseio.com",
-      projectId: "mon-premier-blog-e3b56",
-      storageBucket: "mon-premier-blog-e3b56.appspot.com",
-      messagingSenderId: "561293839260",
-      appId: "1:561293839260:web:55ade4b6d9a2f750f61659",
-      measurementId: "G-S9TT1TE233"
-    };
-    firebase.initializeApp(config);
-  }
-
-  
+    apiKey: "AIzaSyAk8LHsDvCfWHBsiGzH1FuPPhwZ6gC-NQY",
+    authDomain: "mon-premier-blog-81e89.firebaseapp.com",
+    databaseURL: "https://mon-premier-blog-81e89.firebaseio.com",
+    projectId: "mon-premier-blog-81e89",
+    storageBucket: "mon-premier-blog-81e89.appspot.com",
+    messagingSenderId: "444107815512",
+    appId: "1:444107815512:web:5447bd61d72e8b5690a82d",
+    measurementId: "G-H39S2TJET8"
+  };
+  firebase.initializeApp(config);
+}
 }

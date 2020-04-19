@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../models/post.models';
-
 import { PostsService } from '../services/post-service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-list-item',
@@ -16,12 +14,11 @@ export class PostListItemComponent implements OnInit {
   @Input() postCreatedAt: string;
   @Input() postLoveIts: number;
   @Input() postDontLoveIts: number;
-
   @Input() post: Post;
 
   isAuth = true;
   
-    constructor(public postsService: PostsService, public router: Router) { }
+    constructor(private postsService: PostsService) { }
 
 ngOnInit() {}
 
@@ -38,13 +35,12 @@ ngOnInit() {}
    
   }
 
-  onNewPost(){
-    this.router.navigate(["/posts", "new"]);
+ 
+  onDeletePost(post: Post) {
+    const confirmation = confirm('Voulez-vous supprimer ce post?');
+    if (confirmation) {
+      this.postsService.removePost(post);
+    }
   }
-  
-  onDeletePost(posts: Post){
-    this.postsService.removePost(posts);
-  }
-
 }
 
