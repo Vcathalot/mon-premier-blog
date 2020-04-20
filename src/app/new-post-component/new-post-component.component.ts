@@ -12,9 +12,9 @@ import { Post } from '../models/post.models';
 export class NewPostComponentComponent implements OnInit {
 
   postForm: FormGroup;
-  
 
-  constructor(private formBuilder: FormBuilder, 
+
+  constructor(private formBuilder: FormBuilder,
               private postsService: PostsService,
               private router: Router) { }
 
@@ -28,12 +28,14 @@ export class NewPostComponentComponent implements OnInit {
       content: ['', Validators.required],
       loveIts: 0,
       dontLoveIts: 0,
-      createdAt:""
+      createdAt: new Date()
     });
   }
 
   onSavePost() {
-    const title = this.postForm.get('Title').value;
+    console.log('Form : ', this.postForm);
+    // le problème cf console de log du navigateur était dans la majuscule de ton title. fais un retour en arrière pour voir cette erreur dans ta console
+    const title = this.postForm.get('title').value;
     const content = this.postForm.get('content').value;
     const loveIts = this.postForm.get('loveIts').value;
     const dontLoveIts = this.postForm.get('dontLoveIts').value;
